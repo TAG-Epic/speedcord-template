@@ -1,0 +1,32 @@
+name: Autoformat code
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        snap install pycharm-community --classic
+    - name: Setup git
+      run: |         
+        git config user.email "actions@github.com"
+        git config user.name "GitHub Actions"
+    - name: Cleanup code
+      run: |
+        pycharm format -r ./
+        git add .
+        git commit -m "Auto: Format files"
+        git push
