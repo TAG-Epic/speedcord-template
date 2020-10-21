@@ -19,7 +19,7 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
-        snap install pycharm-community --classic
+        sudo snap install pycharm-community --classic
     - name: Setup git
       run: |         
         git config user.email "actions@github.com"
