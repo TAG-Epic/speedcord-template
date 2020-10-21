@@ -20,14 +20,13 @@ jobs:
     - name: Install dependencies
       run: |
         sudo snap install pycharm-community --classic
-        sudo ln -s /opt/pycharm/bin/pycharm.sh /usr/local/bin/pycharm
     - name: Setup git
       run: |         
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions"
     - name: Cleanup code
       run: |
-        pycharm format -r ./
+        source /opt/pycharm/bin/pycharm.sh format -r ./
         git add .
         git commit -m "Auto: Format files"
         git push
