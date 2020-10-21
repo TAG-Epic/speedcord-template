@@ -20,6 +20,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo snap install pycharm-community --classic
+        sudo ln -s /opt/pycharm/bin/pycharm.sh /usr/local/bin/pycharm
     - name: Setup git
       run: |         
         git config user.email "actions@github.com"
