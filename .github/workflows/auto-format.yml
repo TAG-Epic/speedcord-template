@@ -19,14 +19,19 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
-        sudo snap install pycharm-community --classic
+        mkdir temp
+        cd temp
+        wget https://download-cf.jetbrains.com/python/pycharm-professional-2020.2.3.tar.gz
+        tar -xvf pycharm-professional-2020.2.3.tar.gz
+        cd ../../
     - name: Setup git
       run: |         
         git config user.email "actions@github.com"
         git config user.name "GitHub Actions"
     - name: Cleanup code
       run: |
-        source /opt/pycharm/bin/pycharm.sh format -r ./
+        source temp/pycharm-2020.2.3/bin/pycharm.sh format -r ./
+        rm -rf temp/
         git add .
         git commit -m "Auto: Format files"
         git push
