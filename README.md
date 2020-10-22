@@ -1,2 +1,5 @@
-# speedcord-template
-Template for bots made with speedcord
+# Bot Name
+Short tagline / description
+
+## Demo
+![](Demo of using the bot)
